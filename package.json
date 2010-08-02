@@ -1,0 +1,13 @@
+{ "name" : "paynode"
+ ,"main" : "./lib/payment-paypal-payflowpro"
+ ,"description" : "Payment Gateway Adapters for Node.js"
+ ,"version" : "0.0.1-SNAPSHOT"
+ ,"author" : "James R. Carr <james.r.carr@gmail.com>"
+ ,"repository" :
+ {"type" : "git"
+  ,"url" : "http://github.com/jamescarr/paynode"
+ }
+ ,"engines" : { "node" : ">=0.1.101" }
+}
+
+
