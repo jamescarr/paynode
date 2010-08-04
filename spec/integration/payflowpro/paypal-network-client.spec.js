@@ -1,13 +1,14 @@
-require.paths.unshift(__dirname+'/../helpers/')
-require.paths.unshift(__dirname+'/../../lib/')
+require.paths.unshift(__dirname+'/../../helpers/')
+require.paths.unshift(__dirname+'/../../../lib/')
+require.paths.unshift(__dirname+'/../../../lib/payflowpro')
 
 var vows = require('vows'),
     one = require('prenuptials').one,
     fail = require('prenuptials').failWithDump,
     assert = require('assert'),
     transactions = require("transactions"),
-    certuser = require('clients').certuser,
-    payflow = require('payment-paypal-payflowpro')
+    certuser = require('clients').certuser
+    
 var  PaypalNetworkClient = require('paypal-network-client').PaypalNetworkClient;
 
 (function(){    

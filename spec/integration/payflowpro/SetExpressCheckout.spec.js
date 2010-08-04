@@ -1,12 +1,12 @@
-require.paths.unshift(__dirname+'/../helpers/')
-require.paths.unshift(__dirname+'/../../lib/')
+require.paths.unshift(__dirname+'/../../helpers/')
+require.paths.unshift(__dirname+'/../../../lib/')
 
 var vows = require('vows'),
     one = require('prenuptials').one,
     assert = require('assert'),
     transactions = require("transactions"),
     clients = require('clients'),
-    payflow = require('payment-paypal-payflowpro'),
+    payflow = require('paynode').payflowProGateway,
     sys = require('sys')
     
 vows.describe('SetExpressCheckout').addBatch({

@@ -1,14 +1,14 @@
-require.paths.unshift(__dirname+'/../helpers/')
-require.paths.unshift(__dirname+'/../../lib/')
+require.paths.unshift(__dirname+'/../../helpers/')
+require.paths.unshift(__dirname+'/../../../lib/')
 
 var vows = require('vows'),
     one = require('prenuptials').one,
     assert = require('assert'),
     transactions = require("transactions"),
+    payflow = require('paynode').payflowProGateway,
     clients = require('clients'),
-    payflow = require('payment-paypal-payflowpro'),
     sys = require('sys')
- 
+    
 function examplesUsing(client){
   return {
     'Successful Transaction':{

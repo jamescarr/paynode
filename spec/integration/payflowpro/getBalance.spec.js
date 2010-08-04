@@ -1,5 +1,5 @@
-require.paths.unshift(__dirname+'/../helpers/')
-require.paths.unshift(__dirname+'/../../lib/')
+require.paths.unshift(__dirname+'/../../helpers/')
+require.paths.unshift(__dirname+'/../../../lib/')
 
 var vows = require('vows'),
     one = require('prenuptials').one,
@@ -7,7 +7,8 @@ var vows = require('vows'),
     transactions = require("transactions"),
     clients = require('clients')
  
-var client = clients.signatureAuth(require('payment-paypal-payflowpro'));
+var client = clients.signatureAuth(require('paynode').payflowProGateway);
+
 vows.describe('getBalance').addBatch({
   'get single balances': {
     topic: function(){

@@ -1,5 +1,5 @@
-require.paths.unshift(__dirname+'/../helpers/')
-require.paths.unshift(__dirname+'/../../lib/')
+require.paths.unshift(__dirname+'/../../helpers/')
+require.paths.unshift(__dirname+'/../../../lib/')
 
 var vows = require('vows'),
     one = require('prenuptials').one,
@@ -7,7 +7,7 @@ var vows = require('vows'),
     assert = require('assert'),
     transactions = require("transactions"),
     clients = require('clients'),
-    payflow = require('payment-paypal-payflowpro')
+    payflow = payflow = require('paynode').payflowProGateway
     
     
 var client = clients.signatureAuth(payflow);
