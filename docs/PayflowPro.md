@@ -1,4 +1,4 @@
-# payment-paypal-payflowpro
+# Payflow Pro API
 This is a node based wrapper for Paypal's Payflow Pro API (https://cms.paypal.com/us/cgi-bin/?cmd=_render-content&content_ID=developer/howto_gateway_payflowpro). The plan will be to implement all of the API methods available as well as the many authentication modes. 
 
 All fields returned by the API are represented as object properties in the result object, with the exception of list elements (keys prefixed by L_) which will be located in a hash representative of the fields (errors for error name-value pairs, balances for balance related NVPs). 
@@ -39,7 +39,7 @@ See https://cms.paypal.com/us/cgi-bin/?&cmd=_render-content&content_ID=developer
     })
 
 ### Process a payment
-    var payflow = require('payment-paypal-payflowpro')
+    var payflow = require('paynode').payflowProGateway
 
     var client = payflow.createClient({level:payflow.levels.sandbox
       , user:'username'
@@ -77,7 +77,7 @@ See https://cms.paypal.com/us/cgi-bin/?&cmd=_render-content&content_ID=developer
     })
 
 ### Get the balances of your account
-    var payflow = require('payment-paypal-payflowpro')
+    var payflow = require('paynode').payflowProGateway
 
     var client = payflow.createClient({level:payflow.levels.sandbox
       , user:'username'
