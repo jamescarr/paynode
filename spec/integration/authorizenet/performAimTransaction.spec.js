@@ -54,8 +54,8 @@ vows.describe('AIM Transaction').addBatch({
       invalidAuthClient.performAimTransaction(goodTransaction)
         .on('failure', this.callback)
     },
-    'test':function(err, result){
-      assert.equal(result.responsecode, 3)
+    'should report that the login or password is incorrect':function(err, result){
+      assert.equal(result.responsereasontext, 'The merchant login ID or password is invalid or the account is inactive.')
     }
   },
   'a failed transaction due to invalid card':{
