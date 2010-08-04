@@ -12,9 +12,11 @@ some API changes to happen quite rapidly.
  * more to come!
 
 ## Installation
-Installation is available via npm
-
-  npm install paynode
+This has been published as an npm package, meaning there are two ways of
+installing. One is by cloning the git repo and installing it, the other is by
+installing it via npm
+  
+      npm install paynode
 
 ## License
 

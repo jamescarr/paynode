@@ -5,13 +5,6 @@ All fields returned by the API are represented as object properties in the resul
 
 More to come, but please feel free to make suggestions!
 
-## Installation
-This has been published as an npm package, meaning there are two ways of
-installing. One is by cloning the git repo and installing it, the other is by
-installing it via npm
-  
-  npm install payment-paypal-payflowpro
-
 
 ## Supported Authentication Methods
  - 3 Token
