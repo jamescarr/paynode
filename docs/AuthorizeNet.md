@@ -9,9 +9,10 @@ This client provides functionality for interacting with Authorize.net. Certifica
 ## Usage
 
 Here's an example using the minimal fields needed to process a payment.
-
+      var authorizenet = authorizenet = require('paynode').authorizeNetGateway;
+      
       var client = authorizenet.createClient({
-        level:levels.sandbox
+        level:authorizenet.levels.sandbox
         ,login:'<yourlogin>'
         ,tran_key:'<yourtran_key>'
       })
