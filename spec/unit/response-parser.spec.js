@@ -1,5 +1,6 @@
 require.paths.unshift(__dirname+'/../helpers/')
 require.paths.unshift(__dirname+'/../../lib/')
+require.paths.unshift(__dirname+'/../../lib/payflowpro')
 
 var vows = require('vows'),
     one = require('prenuptials').one,

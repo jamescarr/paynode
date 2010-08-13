@@ -1,4 +1,5 @@
 require.paths.unshift(__dirname+'/../../lib/')
+require.paths.unshift(__dirname+'/../../lib/payflowpro/')
 
 var vows = require('vows'),
     assert = require('assert'),
