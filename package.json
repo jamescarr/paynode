@@ -1,7 +1,10 @@
 { "name" : "paynode"
  ,"main" : "./lib/paynode"
+ ,"directories" :{
+    "lib":"./lib"
+  }
  ,"description" : "Payment Gateway Adapters for Node.js"
- ,"version" : "0.0.2"
+ ,"version" : "0.0.3"
  ,"author" : "James R. Carr <james.r.carr@gmail.com>"
  ,"repository" :
  {"type" : "git"
