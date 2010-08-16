@@ -6,7 +6,7 @@ var vows = require('vows'),
     assert = require('assert'),
     transactions = require("transactions"),
     clients = require('clients'),
-    payflow = require('paynode').payflowProGateway,
+    payflow = require('paynode').use('payflowpro'),
     sys = require('sys')
     
 vows.describe('SetExpressCheckout').addBatch({

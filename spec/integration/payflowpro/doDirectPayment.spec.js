@@ -5,7 +5,7 @@ var vows = require('vows'),
     one = require('prenuptials').one,
     assert = require('assert'),
     transactions = require("transactions"),
-    payflow = require('paynode').payflowProGateway,
+    payflow = require('paynode').use('payflowpro'),
     clients = require('clients'),
     sys = require('sys')
     

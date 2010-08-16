@@ -7,7 +7,7 @@ var vows = require('vows'),
     assert = require('assert'),
     transactions = require("transactions"),
     clients = require('clients'),
-    payflow = payflow = require('paynode').payflowProGateway
+   payflow = require('paynode').use('payflowpro')
     
     
 var client = clients.signatureAuth(payflow);

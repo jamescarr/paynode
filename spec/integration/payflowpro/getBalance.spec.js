@@ -7,7 +7,7 @@ var vows = require('vows'),
     transactions = require("transactions"),
     clients = require('clients')
  
-var client = clients.signatureAuth(require('paynode').payflowProGateway);
+var client = clients.signatureAuth(require('paynode').use('payflowpro'));
 
 vows.describe('getBalance').addBatch({
   'get single balances': {

@@ -4,18 +4,17 @@ require.paths.unshift(__dirname+'/../../../lib/')
 var vows = require('vows'),
     assert = require('assert'),
     clients = require('clients'),
-    authorizenet = require('paynode').authorizeNetGateway,
-    levels = require('authorizenet/levels').levels,
+    authorizenet = require('paynode').use('authorizenet'),
     sys = require('sys')
 
 var client = authorizenet.createClient({
-  level:levels.sandbox
+  level:authorizenet.levels.sandbox
   ,login:'9N8T3NK4q6vk'
   ,tran_key:'2jmpG96xM59QAJ4d'
 })
 
 var invalidAuthClient = authorizenet.createClient({
-  level:levels.sandbox
+  level:authorizenet.levels.sandbox
   ,login:'Bad'
   ,tran_key:'Login'
 })
