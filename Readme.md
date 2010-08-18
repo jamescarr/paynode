@@ -18,6 +18,9 @@ installing it via npm
   
       npm install paynode
 
+## Documentation
+Take a look in the docs directory for example usage for specific submodules. 
+
 ## License
 
 (The MIT License)
