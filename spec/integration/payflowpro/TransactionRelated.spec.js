@@ -38,6 +38,7 @@ vows.describe('Transaction related operations').addBatch({
          });
       },
       'should have the results enumartated in an array marked results':function(result, ignored){
+        console.log(require('sys').inspect(result))
         assert.deepEqual(result.results, 
           [
             {

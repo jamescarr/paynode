@@ -11,17 +11,26 @@ More to come, but please feel free to make suggestions!
  - Certificate based auth
  
 ## Supported API methods
- - addressVerify
- - doDirectPayment
- - getBalance
- - getTransactionDetails
- - setExpressCheckout
- - getExpressCheckoutDetails
- - doExpressCheckoutPayment
- - transactionSearch
- - refundTransaction
- - doVoid   
- - (more to come)
+  - doDirectPayment
+  - refundTransaction
+  - doVoid
+  - createRecurringPaymentsProfile
+  - billOutstandingAmount
+  - doAuthorization
+  - doCapture
+  - doNonReferencedCredit
+  - doReauthorization
+  - doReferenceTransaction
+  - getBillingAgreementCustomerDetails
+  - getTransactionDetails
+  - getRecurringPaymentsProfileDetails
+  - manageRecurringPaymentsProfileStatus
+  - managePendingTransactionStatus
+  - massPayment
+  - updateRecurringPaymentsProfile
+  - setExpressCheckout
+  - getExpressCheckoutDetails
+  - doExpressCheckoutPayment 
 
 See https://cms.paypal.com/us/cgi-bin/?&cmd=_render-content&content_ID=developer/howto_api_reference for required fields for each API method.
 ## Examples
