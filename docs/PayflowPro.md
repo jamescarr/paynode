@@ -20,6 +20,7 @@ More to come, but please feel free to make suggestions!
  - doExpressCheckoutPayment
  - transactionSearch
  - refundTransaction
+ - doVoid   
  - (more to come)
 
 See https://cms.paypal.com/us/cgi-bin/?&cmd=_render-content&content_ID=developer/howto_api_reference for required fields for each API method.

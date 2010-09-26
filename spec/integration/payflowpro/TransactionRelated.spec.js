@@ -57,20 +57,6 @@ vows.describe('Transaction related operations').addBatch({
       }
     },
   },
-  'Do Void':{
-    topic:function(){
-        var self = this;
-        executeTransaction().then(function(details){
-          client.doVoid({
-            transactionid:details.transactionid,
-            refundtype:'Partial',
-            amt:20.00
-           }).on('success', self.callback);
-         });
-    },
-    'should do something':function(err, result){
-    }
-  },
   'RefundTransaction':{
     topic:function(){
         var self = this;
