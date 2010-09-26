@@ -83,7 +83,36 @@ See https://cms.paypal.com/us/cgi-bin/?&cmd=_render-content&content_ID=developer
         sys.puts(balance.currencycode)        
       })
     })  
-    
+ 
+## Transaction Search
+To do a transaction search by transaction id:
+        client.transactionSearch({
+          startdate:'2010-09-05T08:15:30-05:00',
+          transactionid:details.transactionid,
+          transactionclass:'All'
+        }).on('success', function(response){
+          response.results.forEach(function(transaction){
+            /**
+              each transaction maps to l_ fields in API docs
+              for example: 
+            {
+            timestamp: transactionDetails.timestamp,
+            timezone: 'GMT',
+            type: 'Payment',
+            name: 'John Doe',
+            transactionid: transactionDetails.transactionid,
+            status: 'Completed',
+            amt: '99.06',
+            currencycode: 'USD',
+            feeamt: '-3.17',
+            netamt: '95.89'
+            }
+            ****/ 
+          });
+        });
+See the Paypal API docs for explicit details.
+
+
 ## Contribute
 All code is written BDD style using vowsjs. I've included a few sh scripts to run all specs, unit-specs, and integration-specs. 
 
