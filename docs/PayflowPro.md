@@ -18,6 +18,8 @@ More to come, but please feel free to make suggestions!
  - setExpressCheckout
  - getExpressCheckoutDetails
  - doExpressCheckoutPayment
+ - transactionSearch
+ - refundTransaction
  - (more to come)
 
 See https://cms.paypal.com/us/cgi-bin/?&cmd=_render-content&content_ID=developer/howto_api_reference for required fields for each API method.
@@ -31,7 +33,8 @@ See https://cms.paypal.com/us/cgi-bin/?&cmd=_render-content&content_ID=developer
       , key:'key representing your key'
     })
 
-### Process a payment
+### DoDirectPayment
+Process a payment
     var payflow = require('paynode').payflowProGateway
 
     var client = payflow.createClient({level:payflow.levels.sandbox
@@ -69,7 +72,8 @@ See https://cms.paypal.com/us/cgi-bin/?&cmd=_render-content&content_ID=developer
       })
     })
 
-### Get the balances of your account
+### GetBalance
+Get the balances of your account
     var payflow = require('paynode').payflowProGateway
 
     var client = payflow.createClient({level:payflow.levels.sandbox
@@ -84,7 +88,7 @@ See https://cms.paypal.com/us/cgi-bin/?&cmd=_render-content&content_ID=developer
       })
     })  
  
-## Transaction Search
+## TransactionSearch
 To do a transaction search by transaction id:
         client.transactionSearch({
           startdate:'2010-09-05T08:15:30-05:00',
