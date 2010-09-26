@@ -9,6 +9,7 @@ some API changes to happen quite rapidly.
 ## Supported Gateways
  * Paypal Payflow Pro
  * Authorize.net (AIM only)
+ * Braintree
  * more to come!
 
 ## Installation

@@ -7,5 +7,8 @@
  {"type" : "git"
   ,"url" : "http://github.com/jamescarr/paynode"
  }
- ,"engines" : { "node" : ">=0.1.101" }
+ ,"engines" : { "node" : ">=0.2.0" },
+ "dependencies":{
+   "braintree":"0.1.0"
+ }
 }
