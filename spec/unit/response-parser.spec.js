@@ -10,7 +10,7 @@ var vows = require('vows'),
     
 vows.describe('Response Parser').addBatch({
   'Parsing your average response': {
-    topic: response.parseResponse("CCV2=A&ACK=Success&CORRELATIONID=111")
+    topic: response.parseResponse({}, "CCV2=A&ACK=Success&CORRELATIONID=111")
     ,
     'should lowercase each key': function(topic){
       assert.deepEqual(['ccv2', 'ack', 'correlationid'], Object.keys(topic))
@@ -21,7 +21,7 @@ vows.describe('Response Parser').addBatch({
       assert.equal('111', topic.correlationid)            
     }
   }, 'Parsing error details': {
-    topic: response.parseResponse('ACK=Fail&L_ERRORCODE0=12345&L_SHORTMESSAGE0=Epic Fail'),
+    topic: response.parseResponse({}, 'ACK=Fail&L_ERRORCODE0=12345&L_SHORTMESSAGE0=Epic Fail'),
     'should parse in side a nested array':function(topic){
       assert.isArray(topic.errors)
     },
@@ -35,7 +35,7 @@ vows.describe('Response Parser').addBatch({
 
     },
   },'Parse multiple error details':{
-    topic:response.parseResponse('L_ERRORCODE0=100&L_SHORTMESSAGE0=Epic Fail&L_ERRORCODE1=200&L_SHORTMESSAGE1=Whale Fail'),
+    topic:response.parseResponse({}, 'L_ERRORCODE0=100&L_SHORTMESSAGE0=Epic Fail&L_ERRORCODE1=200&L_SHORTMESSAGE1=Whale Fail'),
       'should parse as individual entries in the array in order':function(topic){
       var errors = topic.errors
       
@@ -46,7 +46,7 @@ vows.describe('Response Parser').addBatch({
         assert.equal(2, topic.errors.length)
       }
   },'More list items than error details': {
-    topic: response.parseResponse('ACK=Fail&L_ERRORCODE0=12345&L_SHORTMESSAGE0=Epic Fail&L_AMT0=22.33&L_LONGMESSAGE0=long msg&L_SEVERITYCODE0=9&L_CURRENCYCODE0=USD'),
+    topic: response.parseResponse({}, 'ACK=Fail&L_ERRORCODE0=12345&L_SHORTMESSAGE0=Epic Fail&L_AMT0=22.33&L_LONGMESSAGE0=long msg&L_SEVERITYCODE0=9&L_CURRENCYCODE0=USD'),
     'should parse only relevant error fields for error':function(topic){
       assert.deepEqual(['errorcode', 'shortmessage', 'longmessage', 'severitycode'], Object.keys(topic.errors[0]))
     },
@@ -56,7 +56,7 @@ vows.describe('Response Parser').addBatch({
   },
   'create nested structure for paymentinfo':{
     topic:
-      response.parseResponse('paymentrequest_0_amt=22.00&paymentrequest_1_taxamt=4.67&paymentrequest_1_amt=22.91&paymentrequest_0_taxamt=2.67')
+      response.parseResponse({}, 'paymentrequest_0_amt=22.00&paymentrequest_1_taxamt=4.67&paymentrequest_1_amt=22.91&paymentrequest_0_taxamt=2.67')
     ,
     'should create array of paymentrequest':function(topic){
       assert.isArray(topic.paymentrequest)

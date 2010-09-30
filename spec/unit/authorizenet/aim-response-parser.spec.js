@@ -10,7 +10,7 @@ vows.describe('Authorize.net Response Parser').addBatch({
   'Mapping response to appropriate field names':{
     topic:function(){
       var responseFromAuthorize = '1|2|3|(TESTMODE) This transaction has been approved.|000000|P|0|INV223|Sample Transaction|19.99|CC|auth_capture|2222|John|Doe|IBM|1234 Street|Seattle|WA|98004|US|5555555555|5555555556|foo@example.com|John|Dohl|Cisco|4321 Street|St.Louis|MO|68972|US|23.11|1.11|2.33|true|po123|ACF9270B0D46F4900B01115DA202E67F|M|3|||||||||||XXXX1111|Visa||||||||||||||||'
-      return response.parseResponse(responseFromAuthorize)
+      return response.parseResponse({}, responseFromAuthorize)
     },
     'should be parsed into the expected fields':function(result){
       assert.deepEqual(result, {
