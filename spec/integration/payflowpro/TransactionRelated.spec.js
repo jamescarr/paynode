@@ -42,13 +42,13 @@ vows.describe('Transaction related operations').addBatch({
       }, 
       'should have the results enumartated in an array marked results':function(result, ignored){
         delete result.results[0].timestamp
+        delete result.results[0].transactionid
         assert.deepEqual(result.results, 
           [
             {
               timezone: 'GMT',
               type: 'Payment',
               name: 'John Doe',
-              transactionid: transactionDetails.transactionid,
               status: 'Completed',
               amt: '99.06',
               currencycode: 'USD',
