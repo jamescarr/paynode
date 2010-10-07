@@ -1,7 +1,7 @@
 require.paths.unshift(__dirname+'/../../lib/')
 var vows = require('vows'),
     assert = require('assert'),
-    levels = require('payment-paypal-payflowpro').levels
+    levels = require('paynode').use('payflowpro').levels
     
 vows.describe('Environment Levels').addBatch({
   'sandbox url':{

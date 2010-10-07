@@ -55,14 +55,14 @@ vows.describe('gateway client').addBatch({
         ,path:'/gateway/transact.dll'
         ,contentType:'text/keyvalue'
         ,responseParser:{
-          parseResponse:function(s){
-            return s
+          parseResponse:function(req, res){
+            return res
           }
         }
       })
       client.request({foo:'22'}, this.callback)
     },
-    'should make the request':function(result, ignore){
+    'should make the request and get a response':function(result, ignore){
       assert.isTrue(result.length > 1)
     }
   }

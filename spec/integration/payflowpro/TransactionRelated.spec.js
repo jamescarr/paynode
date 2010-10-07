@@ -37,12 +37,14 @@ vows.describe('Transaction related operations').addBatch({
            }).on('success', self.callback);
          });
       },
+      'should contain a timestamp': function(result, ignored){
+        assert.isNotNull(result.results[0].timestamp)
+      }, 
       'should have the results enumartated in an array marked results':function(result, ignored){
-        console.log(require('sys').inspect(result))
+        delete result.results[0].timestamp
         assert.deepEqual(result.results, 
           [
             {
-              timestamp: transactionDetails.timestamp,
               timezone: 'GMT',
               type: 'Payment',
               name: 'John Doe',
