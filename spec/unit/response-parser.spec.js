@@ -46,7 +46,8 @@ vows.describe('Response Parser').addBatch({
         assert.equal(2, topic.errors.length)
       }
   },'More list items than error details': {
-    topic: response.parseResponse({}, 'ACK=Fail&L_ERRORCODE0=12345&L_SHORTMESSAGE0=Epic Fail&L_AMT0=22.33&L_LONGMESSAGE0=long msg&L_SEVERITYCODE0=9&L_CURRENCYCODE0=USD'),
+    topic: response.parseResponse({method:'getBalance'}, 'ACK=Fail&L_ERRORCODE0=12345&L_SHORTMESSAGE0=Epic Fail&L_AMT0=22.33&L_LONGMESSAGE0=long msg&L_SEVERITYCODE0=9&L_CURRENCYCODE0=USD'),
+
     'should parse only relevant error fields for error':function(topic){
       assert.deepEqual(['errorcode', 'shortmessage', 'longmessage', 'severitycode'], Object.keys(topic.errors[0]))
     },
