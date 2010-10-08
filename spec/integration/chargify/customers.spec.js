@@ -10,9 +10,17 @@ var client = paynode.createClient({
       ,password:'test12345'})
 
 vows.describe('module').addBatch({
+  'Given I have tried to create a customer with missing info':{
+    topic:function(){
+      client.customers.create({}).on('failure', this.callback)
+    },
+    'it should contain an errors array':function(result, ign){
+      assert.isArray(result.errors)
+    }
+  },
   'Given I have customer data':{
     topic:function(){
-      client.createCustomer({
+      client.customers.create({
         customer:{
           first_name:'Joe',
           last_name:'Blow',
@@ -30,7 +38,7 @@ vows.describe('module').addBatch({
   },
   'listing customers':{
     topic:function(){
-      client.listCustomers().on('success', this.callback)
+      client.customers.list().on('success', this.callback)
     },
     'should be an array':function(response, ign){
       assert.isArray(response)

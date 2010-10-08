@@ -10,6 +10,7 @@ some API changes to happen quite rapidly.
  * Paypal Payflow Pro
  * Authorize.net (AIM only)
  * Braintree
+ * Chargify
  * more to come!
 
 ## Installation
