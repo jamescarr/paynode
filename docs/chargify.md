@@ -49,7 +49,11 @@ This is a rough cut... hopefully the full API will be implemented soon! Let me k
 
 
 ## Listing Products
-  client.products.list()
+	client.products.list().on('success', function(products){
+	  products.forEach(function(product){
+	    // something with each product, see the docs for structure
+	  })
+	})
 ## License 
 
 (The MIT License)
