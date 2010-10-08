@@ -12,16 +12,16 @@ This is a rough cut... hopefully the full API will be implemented soon! Let me k
   var client = chargify.createClient({site:'yoursite', key:'api key', password:'password'})
 
 ## Creating a Customer
-  client.customers.create(
-    {first_name:'Joe', last_name:'Smokes', email:'joe_smokes@example.com'}
-  ).on('success', function(resp){
-    // succeeded!
-  }).on('failure', function(resp){
-    // damn, failed. Take a look at resp.errors (an array)
-    resp.errors.forEach(function(err){  
-      console.log("Error: " + err)
+    client.customers.create(
+     {first_name:'Joe', last_name:'Smokes', email:'joe_smokes@example.com'}
+    ).on('success', function(resp){
+      // succeeded!
+    }).on('failure', function(resp){
+      // damn, failed. Take a look at resp.errors (an array)
+      resp.errors.forEach(function(err){  
+        console.log("Error: " + err)
+      })
     })
-  })
 
 ## Creating a Subscription
   client.subscriptions.create({
