@@ -24,28 +24,28 @@ This is a rough cut... hopefully the full API will be implemented soon! Let me k
      })
 
 ## Creating a Subscription
-   client.subscriptions.create({
-    "product_handle":"basic",
-    "next_billing_at":"2010-08-29T12:00:00-04:00",
-    "customer_attributes":{
-      "first_name":"John",
-      "last_name":"Doe",
-      "email":"john.doe@example.com",
-      "reference":"123",
-      "organization":"Acme Widgets"
-    },
-    "payment_profile_attributes":{
-      "vault_token":"12345",
-      "customer_vault_token":"67890",
-      "current_vault":"authorizenet",
-      "expiration_year":"2020",
-      "expiration_month":"12",
-      "card_type":"visa",
-      "last_four":"1111"
-     }
-   }).on('success', function(resp){
-    // some response as defined on the chargify api docs site
-   })
+    client.subscriptions.create({
+     "product_handle":"basic",
+     "next_billing_at":"2010-08-29T12:00:00-04:00",
+     "customer_attributes":{
+       "first_name":"John",
+       "last_name":"Doe",
+       "email":"john.doe@example.com",
+       "reference":"123",
+       "organization":"Acme Widgets"
+     },
+     "payment_profile_attributes":{
+       "vault_token":"12345",
+       "customer_vault_token":"67890",
+       "current_vault":"authorizenet",
+       "expiration_year":"2020",
+       "expiration_month":"12",
+       "card_type":"visa",
+       "last_four":"1111"
+      }
+    }).on('success', function(resp){
+     // some response as defined on the chargify api docs site
+    })
 
 
 ## Listing Products
