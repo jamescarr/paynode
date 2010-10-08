@@ -138,6 +138,55 @@ vows.describe('client api').addBatch({
       path:'/subscriptions/93.json',
       body:''
     })
+  },
+  'Transactions':{
+    
+    'list':{
+      'with no params':calls(function(){
+        return client.transactions.list()
+      }).andExpects({
+        method:'get',
+        path:'/transactions.json',
+        body:''
+      }),
+      'with optional params':calls(function(){
+        return client.transactions.list({kinds:['credit', 'charge'], max_id:22})
+      }).andExpects({
+        method:'get',
+        path:'/transactions.json?kinds%5B%5D=credit&kinds%5B%5D=charge&max_id=22',
+        body:''
+      })
+    },
+    'list transactions for a subscription':{
+      'with no params':calls(function(){
+        return client.transactions.listForSubscription({id:33})
+      }).andExpects({
+        method:'get',
+        path:'/subscriptions/33/transactions.json',
+        body:''
+      }),
+      'with optional params':calls(function(){
+        return client.transactions.listForSubscription({id:33}, {kinds:['charge'], page:2})
+      }).andExpects({
+        method:'get',
+        path:'/subscriptions/33/transactions.json?kinds%5B%5D=charge&page=2',
+        body:''
+      })
+    },
+    'Usage':{
+      'create':calls(function(){ 
+        return client.usage.create({id:43}, {id:30}, {
+          usage:{
+            quantity:5,
+            memo:'Five gigs used'
+          }
+        })  
+      }).andExpects({
+        method:'post',
+        path:'/subscriptions/43/components/30/usages.json',
+        body:JSON.stringify({usage:{quantity:5, memo:'Five gigs used'}})   
+      })
+    }
   }
   
 }).export(module);

@@ -54,6 +54,30 @@ This is a rough cut... hopefully the full API will be implemented soon! Let me k
 	    // something with each product, see the docs for structure
 	  })
 	})
+
+## Transactions
+(Coming Soon)
+
+## Charges
+(Coming Soon)
+
+## Refunds
+(Coming Soon)
+
+## Credits
+(Coming Soon)
+
+## Metered Usage
+
+### Recording a usage
+Recording a usage is a matter of calling client.usage.create([subscription], [component], [usage]), where the subscription and component are objects representing both (although all that is needed is ids). This 
+makes it convenient if you have references to a subscription and component on hand. Otherwise you can just do it literally:
+	client.usage.create({id:33}, {id:22}, {usage:{quantity:10, memo:'databases in use'}})
+	  .on('success', successHandler)
+	  .on('failure', failureHandler)
+	
+
+
 ## License 
 
 (The MIT License)
