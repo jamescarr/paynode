@@ -1,55 +1,135 @@
-# Chargify API
-This is an adapter for using [Chargify](http://www.chargify.com) payment gateway for subscription based and "metered" payments. Please see the API docs for request details.
-As with the rest of the paynode api, clients are created using createClient and each API method has 'success' or 'failure' events that will be triggered whenever those
-states are reached.
+# Payflow Pro API
+This is a node based wrapper for Paypal's Payflow Pro API (https://cms.paypal.com/us/cgi-bin/?cmd=_render-content&content_ID=developer/howto_gateway_payflowpro). The plan will be to implement all of the API methods available as well as the many authentication modes. 
 
-This is a rough cut... hopefully the full API will be implemented soon! Let me know if you have problems!
+All fields returned by the API are represented as object properties in the result object, with the exception of list elements (keys prefixed by L_) which will be located in a hash representative of the fields (errors for error name-value pairs, balances for balance related NVPs). 
+
+More to come, but please feel free to make suggestions!
 
 
-## Creating a client
-  var chargify = require('paynode').use('chargify')
+## Supported Authentication Methods
+ - 3 Token
+ - Certificate based auth
+ 
+## Supported API methods
+  - doDirectPayment
+  - refundTransaction
+  - doVoid
+  - createRecurringPaymentsProfile
+  - billOutstandingAmount
+  - doAuthorization
+  - doCapture
+  - doNonReferencedCredit
+  - doReauthorization
+  - doReferenceTransaction
+  - getBillingAgreementCustomerDetails
+  - getTransactionDetails
+  - getRecurringPaymentsProfileDetails
+  - manageRecurringPaymentsProfileStatus
+  - managePendingTransactionStatus
+  - massPayment
+  - updateRecurringPaymentsProfile
+  - setExpressCheckout
+  - getExpressCheckoutDetails
+  - doExpressCheckoutPayment 
 
-  var client = chargify.createClient({site:'yoursite', key:'api key', password:'password'})
+See https://cms.paypal.com/us/cgi-bin/?&cmd=_render-content&content_ID=developer/howto_api_reference for required fields for each API method.
+## Examples
 
-## Creating a Customer
-  client.customers.create(
-    {first_name:'Joe', last_name:'Smokes', email:'joe_smokes@example.com'}
-  ).on('success', function(resp){
-    // succeeded!
-  }).on('failure', function(resp){
-    // damn, failed. Take a look at resp.errors (an array)
-    resp.errors.forEach(function(err){  
-      console.log("Error: " + err)
+### Creating a client using SSL Certificate based Auth:
+    var client = payflow.createClient({level:payflow.levels.sandbox
+      , user:'username'
+      , password:'LXLDUTRFGA39YR25'
+      , cert:'string representing your cert'
+      , key:'key representing your key'
     })
-  })
 
-## Creating a Subscription
-  client.subscriptions.create({
-   "product_handle":"basic",
-   "next_billing_at":"2010-08-29T12:00:00-04:00",
-   "customer_attributes":{
-     "first_name":"John",
-     "last_name":"Doe",
-     "email":"john.doe@example.com",
-     "reference":"123",
-     "organization":"Acme Widgets"
-   },
-   "payment_profile_attributes":{
-     "vault_token":"12345",
-     "customer_vault_token":"67890",
-     "current_vault":"authorizenet",
-     "expiration_year":"2020",
-     "expiration_month":"12",
-     "card_type":"visa",
-     "last_four":"1111"
-    }
-  }).on('success', function(resp){
-    // some response as defined on the chargify api docs site
-  })
+### DoDirectPayment
+Process a payment
+    var payflow = require('paynode').payflowProGateway
+
+    var client = payflow.createClient({level:payflow.levels.sandbox
+      , user:'username'
+      , password:'password'
+      , signature: 'signature'
+    })
+
+    client.doDirectPayment({amt:'99.06'
+       ,paymentaction:'Sale'
+       ,ipaddress:'1.1.1.1'
+       ,creditcardtype:'Visa'
+       ,acct:'4834907016040081'
+       ,expdate:'032011'
+       ,cvv2:'000'
+       ,firstname:'John'
+       ,lastname:'Doe'
+       ,street:'123 test st'
+       ,city: 'omaha'
+       ,state: 'NE'
+       ,countrycode:'US'
+       ,zip:'68102'
+      }).on('success', function(result){
+        // do something based on a succesful transaction
+      }).on('failure', function(result){
+        // do something based on a failed transaction
+        result.errors.forEach(function(err){
+          /**
+           * { errorcode: '10527'
+           * , shortmessage: 'Invalid Data'
+           * , longmessage: 'This transaction cannot be processed. Please enter a valid credit card number and type.'
+           * , severitycode: 'Error'
+           * }
+           **/
+      })
+    })
+
+### GetBalance
+Get the balances of your account
+    var payflow = require('paynode').payflowProGateway
+
+    var client = payflow.createClient({level:payflow.levels.sandbox
+      , user:'username'
+      , password:'password'
+      , signature: 'signature'
+    })
+    client.getBalance().on('success', function(result){
+      result.balances.forEach(function(balance){
+        sys.puts(balance.amt)
+        sys.puts(balance.currencycode)        
+      })
+    })  
+ 
+## TransactionSearch
+To do a transaction search by transaction id:
+        client.transactionSearch({
+          startdate:'2010-09-05T08:15:30-05:00',
+          transactionid:details.transactionid,
+          transactionclass:'All'
+        }).on('success', function(response){
+          response.results.forEach(function(transaction){
+            /**
+              each transaction maps to l_ fields in API docs
+              for example: 
+            {
+            timestamp: transactionDetails.timestamp,
+            timezone: 'GMT',
+            type: 'Payment',
+            name: 'John Doe',
+            transactionid: transactionDetails.transactionid,
+            status: 'Completed',
+            amt: '99.06',
+            currencycode: 'USD',
+            feeamt: '-3.17',
+            netamt: '95.89'
+            }
+            ****/ 
+          });
+        });
+See the Paypal API docs for explicit details.
 
 
-## Listing Products
-  client.products.list()
+## Contribute
+All code is written BDD style using vowsjs. I've included a few sh scripts to run all specs, unit-specs, and integration-specs. 
+
 ## License 
 
 (The MIT License)
