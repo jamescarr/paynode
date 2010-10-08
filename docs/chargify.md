@@ -7,9 +7,9 @@ This is a rough cut... hopefully the full API will be implemented soon! Let me k
 
 
 ## Creating a client
-  var chargify = require('paynode').use('chargify')
+	var chargify = require('paynode').use('chargify')
 
-  var client = chargify.createClient({site:'yoursite', key:'api key', password:'password'})
+	var client = chargify.createClient({site:'yoursite', key:'api key', password:'password'})
 
 ## Creating a Customer
      client.customers.create(
