@@ -10,16 +10,16 @@ var client = paynode.createClient({
       ,password:'test12345'})
 
 vows.describe('module').addBatch({
-  'Given I have tried to create a customer with missing info':{
-    topic:function(){
+  'Given I have tried to create a customer with missing info': {
+    topic: function() {
       client.customers.create({}).on('failure', this.callback)
     },
-    'it should contain an errors array':function(result, ign){
+    'it should contain an errors array': function(result, ignore) {
       assert.isArray(result.errors)
     }
   },
-  'Given I have customer data':{
-    topic:function(){
+  'Given I have customer data': {
+    topic: function() {
       client.customers.create({
         customer:{
           first_name:'Joe',
@@ -28,13 +28,12 @@ vows.describe('module').addBatch({
         }
       }).on('success', this.callback);
     },
-    'should get response with same details sent':function(response, ignore){
+    'should get response with same details sent': function(response) {
       assert.equal(response.customer.first_name, 'Joe')
     },
-    'should have populated an id':function(response, ignored){
+    'should have populated an id':function(response) {
       assert.isNotNull(response.customer.id)
     }
-    
   },
   'listing customers':{
     topic:function(){
