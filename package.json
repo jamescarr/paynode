@@ -1,14 +1,14 @@
 { "name" : "paynode"
  ,"main" : "./lib/paynode"
  ,"description" : "Payflow Pro SDK for Node"
- ,"version" : "0.2.0"
+ ,"version" : "0.3.0"
  ,"author" : "James R. Carr <james.r.carr@gmail.com>"
  ,"repository" :
  {"type" : "git"
   ,"url" : "http://github.com/jamescarr/paynode"
  }
- ,"engines" : { "node" : ">=0.2.6" },
- "dependencies":{
-   "braintree":"0.1.1"
+ ,"engines" : { "node" : ">=0.4.8" },
+ "dependencies": {
+   "braintree":"0.2.0"
  }
 }
