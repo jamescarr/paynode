@@ -1,2 +1,2 @@
 #!/bin/sh
-find spec/ -name '*spec.js' | xargs vows
+find spec/ -name '*spec.js' | xargs vows --spec
