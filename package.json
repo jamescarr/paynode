@@ -1,14 +1,20 @@
-{ "name" : "paynode"
- ,"main" : "./lib/paynode"
- ,"description" : "Payflow Pro SDK for Node"
- ,"version" : "0.3.2"
- ,"author" : "James R. Carr <james.r.carr@gmail.com>"
- ,"repository" :
- {"type" : "git"
-  ,"url" : "http://github.com/jamescarr/paynode"
- }
- ,"engines" : { "node" : ">=0.4.8" },
- "dependencies": {
-   "braintree":"0.2.0"
- }
+{
+  "author": "James R. Carr <james.r.carr@gmail.com> (http://blog.james-carr.org)",
+  "name": "paynode",
+  "description": "Module for integrating with various payment gateways",
+  "version": "0.3.5",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/jamescarr/paynode.git"
+  },
+  "main": "./lib/paynode.js",
+  "engines": {
+    "node": ">=0.4.7"
+  },
+  "dependencies": {
+    "braintree":"*"
+  },
+  "devDependencies": {
+    "vows":"*"	
+  }
 }
