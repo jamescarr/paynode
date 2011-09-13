@@ -1,5 +1,6 @@
 # Braintree Support
 To use braintree, include it like any other paynode module:
+
        var braintree = require('paynode').use('braintree');
 
 Currently this just brings in the braintree module maintained by Braintree
