@@ -45,6 +45,7 @@ See https://cms.paypal.com/us/cgi-bin/?&cmd=_render-content&content_ID=developer
 
 ### DoDirectPayment
 Process a payment
+
     var payflow = require('paynode').payflowProGateway
 
     var client = payflow.createClient({level:payflow.levels.sandbox
@@ -84,6 +85,7 @@ Process a payment
 
 ### GetBalance
 Get the balances of your account
+    
     var payflow = require('paynode').payflowProGateway
 
     var client = payflow.createClient({level:payflow.levels.sandbox
@@ -100,6 +102,7 @@ Get the balances of your account
  
 ## TransactionSearch
 To do a transaction search by transaction id:
+
         client.transactionSearch({
           startdate:'2010-09-05T08:15:30-05:00',
           transactionid:details.transactionid,
@@ -124,6 +127,7 @@ To do a transaction search by transaction id:
             ****/ 
           });
         });
+
 See the Paypal API docs for explicit details.
 
 
