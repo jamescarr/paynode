@@ -46,7 +46,7 @@ See https://cms.paypal.com/us/cgi-bin/?&cmd=_render-content&content_ID=developer
 ### DoDirectPayment
 Process a payment
 
-    var payflow = require('paynode').payflowProGateway
+    var payflow = require('paynode').use('payflowpro');
 
     var client = payflow.createClient({level:payflow.levels.sandbox
       , user:'username'
@@ -86,7 +86,7 @@ Process a payment
 ### GetBalance
 Get the balances of your account
     
-    var payflow = require('paynode').payflowProGateway
+    var payflow = require('paynode').use('payflowpro');
 
     var client = payflow.createClient({level:payflow.levels.sandbox
       , user:'username'
