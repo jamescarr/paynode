@@ -1,7 +1,6 @@
-require.paths.unshift(__dirname+'/../../lib/')
 var vows = require('vows'),
     assert = require('assert'),
-    Client = require('gateway-client').GatewayClient
+    Client = require('../../lib/gateway-client').GatewayClient
     
 var returnExceptionFrom = function(fn){
   return function(){

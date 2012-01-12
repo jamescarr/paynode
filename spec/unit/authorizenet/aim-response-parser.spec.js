@@ -1,9 +1,6 @@
-require.paths.unshift(__dirname+'/../helpers/')
-require.paths.unshift(__dirname+'/../../../lib/')
-
 var vows = require('vows'),
     assert = require('assert'),
-    response = require('authorizenet/response-parser')
+    response = require('../../../lib/authorizenet/response-parser')
 
     
 vows.describe('Authorize.net Response Parser').addBatch({

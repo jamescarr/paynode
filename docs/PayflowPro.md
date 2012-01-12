@@ -95,8 +95,8 @@ Get the balances of your account
     })
     client.getBalance().on('success', function(result){
       result.balances.forEach(function(balance){
-        sys.puts(balance.amt)
-        sys.puts(balance.currencycode)        
+        console.log(balance.amt)
+        console.log(balance.currencycode)
       })
     })  
  

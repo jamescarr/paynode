@@ -1,7 +1,6 @@
 var http = require('http'),
     crypto = require('crypto'),
     fs = require('fs'),
-    sys = require('sys'),
     qs = require('querystring')
     
 var transaction = {user:'cert_1279865159_biz_api1.gmail.com'
@@ -38,7 +37,7 @@ function start(key, cert){
   
   req.on('response', function(res){
     res.on('data', function(data){
-      sys.puts(sys.inspect(qs.parse(data)))
+      console.dir(qs.parse(data));
     })
   })
 }

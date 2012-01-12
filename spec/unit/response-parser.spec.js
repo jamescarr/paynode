@@ -1,11 +1,7 @@
-require.paths.unshift(__dirname+'/../helpers/')
-require.paths.unshift(__dirname+'/../../lib/')
-require.paths.unshift(__dirname+'/../../lib/payflowpro')
-
 var vows = require('vows'),
-    one = require('prenuptials').one,
+    one = require('../helpers/prenuptials').one,
     assert = require('assert'),
-    response = require('response-parser')
+    response = require('../../lib/payflowpro/response-parser')
     
     
 vows.describe('Response Parser').addBatch({

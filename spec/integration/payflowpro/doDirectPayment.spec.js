@@ -1,21 +1,17 @@
-require.paths.unshift(__dirname+'/../../helpers/')
-require.paths.unshift(__dirname+'/../../../lib/')
-
 var vows = require('vows'),
-    one = require('prenuptials').one,
+    one = require('../../helpers/prenuptials').one,
     assert = require('assert'),
-    transactions = require("transactions"),
-    payflow = require('paynode').use('payflowpro'),
-    clients = require('clients'),
-    sys = require('sys')
+    transactions = require("../../helpers/transactions"),
+    payflow = require('../../../lib/paynode').use('payflowpro'),
+    clients = require('../../helpers/clients')
     
 function examplesUsing(client){
   return {
     'Successful Transaction':{
       topic: function () {
         client.doDirectPayment(transactions.valid)
-          .on('success', this.callback) 
-          .on('failure', function(res){ console.log(sys.inspect(res)) })
+          .on('success', this.callback)
+          .on('failure', function(res){ console.dir(res) })
       },  
       'emits a successful result': function (result, ignore){
         assert.equal('Success', result.ack)
@@ -58,5 +54,5 @@ function examplesUsing(client){
 
 vows.describe('doDirectPayment')
   .addBatch(examplesUsing(clients.signatureAuth(payflow)))
-  .addBatch(examplesUsing(clients.certAuth(payflow)))
+  //.addBatch(examplesUsing(clients.certAuth(payflow)))
   .export(module);
