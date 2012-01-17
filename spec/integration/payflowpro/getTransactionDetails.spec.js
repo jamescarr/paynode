@@ -1,13 +1,10 @@
-require.paths.unshift(__dirname+'/../../helpers/')
-require.paths.unshift(__dirname+'/../../../lib/')
-
 var vows = require('vows'),
-    one = require('prenuptials').one,
-    fail = require('prenuptials').failWithDump,
+    one = require('../../helpers/prenuptials').one,
+    fail = require('../../helpers/prenuptials').failWithDump,
     assert = require('assert'),
-    transactions = require("transactions"),
-    clients = require('clients'),
-   payflow = require('paynode').use('payflowpro')
+    transactions = require("../../helpers/transactions"),
+    clients = require('../../helpers/clients'),
+   payflow = require('../../../lib/paynode').use('payflowpro')
     
     
 var client = clients.signatureAuth(payflow);

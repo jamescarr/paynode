@@ -1,7 +1,6 @@
-require.paths.unshift(__dirname+'../../../lib/');
 var vows = require('vows');
 var assert = require('assert');
-var r = require('payflowpro/response-parser');
+var r = require('../../lib/payflowpro/response-parser');
 
 
 vows.describe('building a response').addBatch({

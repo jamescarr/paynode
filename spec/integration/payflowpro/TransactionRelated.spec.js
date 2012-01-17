@@ -1,11 +1,9 @@
-require.paths.unshift(__dirname+'../../../lib/')
-require.paths.unshift(__dirname+'/../../helpers/')
 var vows = require('vows');
 var assert = require('assert');
-var clients = require('clients');
-var transactions = require ('transactions');
+var clients = require('../../helpers/clients');
+var transactions = require ('../../helpers/transactions');
 
-var client = clients.signatureAuth(require('paynode').use('payflowpro'));
+var client = clients.signatureAuth(require('../../../lib/paynode').use('payflowpro'));
 
 // promise for transaction execution
 function executeTransaction () {

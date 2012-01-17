@@ -1,7 +1,6 @@
-require.paths.unshift(__dirname+'../../../lib/');
 var vows = require('vows');
 var assert = require('assert');
-var val = require('value-matcher').val;
+var val = require('../../lib/value-matcher').val;
 
 
 vows.describe('Value Matcher').addBatch({

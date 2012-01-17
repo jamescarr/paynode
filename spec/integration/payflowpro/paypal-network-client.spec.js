@@ -1,19 +1,16 @@
-require.paths.unshift(__dirname+'/../../helpers/')
-require.paths.unshift(__dirname+'/../../../lib/')
-require.paths.unshift(__dirname+'/../../../lib/payflowpro')
-
 var vows = require('vows'),
-    one = require('prenuptials').one,
-    fail = require('prenuptials').failWithDump,
+    one = require('../../helpers/prenuptials').one,
+    fail = require('../../helpers/prenuptials').failWithDump,
     assert = require('assert'),
-    transactions = require("transactions"),
-    certuser = require('clients').certuser
+    transactions = require("../../helpers/transactions"),
+    certuser = require('../../helpers/clients').certuser,
+    levels = require('../../../lib/payflowpro/levels')
     
-var  PaypalNetworkClient = require('paypal-network-client').PaypalNetworkClient;
+var  PaypalNetworkClient = require('../../../lib/payflowpro/paypal-network-client').PaypalNetworkClient;
 
 (function(){    
-  var client = new PaypalNetworkClient('api-3t.sandbox.paypal.com')
-    ,certClient = new PaypalNetworkClient('api.sandbox.paypal.com', {cert:certuser.cert, key:certuser.key})
+  var client = new PaypalNetworkClient(levels.sandbox({}))
+    ,certClient = new PaypalNetworkClient(levels.sandbox({ cert: true }), {cert:certuser.cert, key:certuser.key})
   vows.describe('PaypalNetworkClient').addBatch({
     'signature auth': {
       topic:function(){

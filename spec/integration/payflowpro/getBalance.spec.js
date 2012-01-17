@@ -1,13 +1,10 @@
-require.paths.unshift(__dirname+'/../../helpers/')
-require.paths.unshift(__dirname+'/../../../lib/')
-
 var vows = require('vows'),
-    one = require('prenuptials').one,
+    one = require('../../helpers/prenuptials').one,
     assert = require('assert'),
-    transactions = require("transactions"),
-    clients = require('clients')
+    transactions = require("../../helpers/transactions"),
+    clients = require('../../helpers/clients')
  
-var client = clients.signatureAuth(require('paynode').use('payflowpro'));
+var client = clients.signatureAuth(require('../../../lib/paynode').use('payflowpro'));
 
 vows.describe('getBalance').addBatch({
   'get single balances': {

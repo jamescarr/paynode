@@ -1,9 +1,6 @@
-require.paths.unshift(__dirname+'/../../lib/')
-require.paths.unshift(__dirname+'/../../lib/payflowpro/')
-
 var vows = require('vows'),
     assert = require('assert'),
-    builder = require('request-builder')
+    builder = require('../../lib/payflowpro/request-builder')
     
 var exampleRequest = {maxamt:1000.00,
   paymentrequest:[

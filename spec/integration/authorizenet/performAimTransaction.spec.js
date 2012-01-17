@@ -1,11 +1,7 @@
-require.paths.unshift(__dirname+'/../../helpers/')
-require.paths.unshift(__dirname+'/../../../lib/')
-
 var vows = require('vows'),
     assert = require('assert'),
-    clients = require('clients'),
-    authorizenet = require('paynode').use('authorizenet'),
-    sys = require('sys')
+    clients = require('../../helpers/clients'),
+    authorizenet = require('../../../lib/paynode').use('authorizenet')
 
 var client = authorizenet.createClient({
   level:authorizenet.levels.sandbox
@@ -24,7 +20,7 @@ var goodTransaction = {
       "x_method": "CC",
       "x_card_num": "4111111111111111",
       "x_exp_date": "0115",
-      
+
       "x_amount": "19.99",
       "x_description": "Sample Transaction",
 
@@ -64,7 +60,7 @@ vows.describe('AIM Transaction').addBatch({
       "x_method": "CC",
       "x_card_num": "4111111111111111",
       "x_exp_date": "0105",
-      
+
       "x_amount": "19.99",
       "x_description": "Sample Transaction",
 

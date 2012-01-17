@@ -1,7 +1,6 @@
-require.paths.unshift(__dirname+'/../../lib/');
 var vows = require('vows');
 var assert = require('assert');
-var Client = require('paynode').use('chargify')._Client;
+var Client = require('../../lib/paynode').use('chargify')._Client;
 
 /// -- example data
 var exampleSubscription = {"subscription":{

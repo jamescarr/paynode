@@ -1,7 +1,6 @@
-require.paths.unshift(__dirname+'/../../../lib/');
 var vows = require('vows');
 var assert = require('assert');
-var paynode = require('paynode').use('chargify');
+var paynode = require('../../../lib/paynode').use('chargify');
 
 
 var client = paynode.createClient({
@@ -20,13 +19,14 @@ vows.describe('module').addBatch({
   },
   'Given I have customer data': {
     topic: function() {
+      var callback = this.callback;
       client.customers.create({
         customer:{
           first_name:'Joe',
           last_name:'Blow',
           email:'joe.blow@example.com'
         }
-      }).on('success', this.callback);
+      }).on('success', function(response) { callback(null, response) })
     },
     'should get response with same details sent': function(response) {
       assert.equal(response.customer.first_name, 'Joe')
