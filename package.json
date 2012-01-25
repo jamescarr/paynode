@@ -2,14 +2,14 @@
   "author": "James R. Carr <james.r.carr@gmail.com> (http://blog.james-carr.org)",
   "name": "paynode",
   "description": "Module for integrating with various payment gateways",
-  "version": "0.3.5",
+  "version": "0.3.6",
   "repository": {
     "type": "git",
     "url": "git://github.com/jamescarr/paynode.git"
   },
   "main": "./lib/paynode.js",
   "engines": {
-    "node": ">=0.4.7"
+    "node": "~0.6.7"
   },
   "dependencies": {
     "braintree":"*"
