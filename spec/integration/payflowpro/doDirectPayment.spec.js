@@ -35,7 +35,7 @@ function examplesUsing(client){
       }),
       'contains error messages in an array':one(function(result){
         assert.isArray(result.errors)
-        assert.equal(1, result.errors.length)
+        assert.equal(1, result.errors.length, result.errors)
       }),
       'error object contains associated information':one(function(result){
         result.errors.forEach(function(err){
