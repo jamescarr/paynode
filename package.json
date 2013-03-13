@@ -2,6 +2,7 @@
   "author": "James R. Carr <james.r.carr@gmail.com> (http://blog.james-carr.org)",
   "name": "paynode",
   "description": "Module for integrating with various payment gateways",
+  "keywords": ["payment","gateway","paypal","chargify","braintree","authorize.net"],
   "version": "0.3.6",
   "repository": {
     "type": "git",
